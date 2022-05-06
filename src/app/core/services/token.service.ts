@@ -2,25 +2,36 @@ import { ApiBaseService } from 'src/app/core/services/api-base.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Token } from '../models/token.model';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService extends ApiBaseService {
-  constructor(protected http: HttpClient) {
-    super('', http);
+  constructor(
+    protected http: HttpClient,
+    private storageService: StorageService
+  ) {
+    super(environment.tdxApiUrl, http);
   }
 
-  getToken(): Observable<any> {
+  get isGetToken(): boolean {
+    return !!this.storageService.token.getItem();
+  }
+
+  getToken(): Observable<Token> {
     const formData = new URLSearchParams();
-    formData.set('client_id', 'miahsuwork-23e3ae8f-59e2-4137');
-    formData.set('client_secret', '4b42578f-40fb-4268-bde2-bf04176d6ed0');
+    const option = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    formData.set('client_id', environment.clientId);
+    formData.set('client_secret', environment.clientSecret);
     formData.set('grant_type', 'client_credentials');
 
     return this.post(
-      'https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token',
+      '/auth/realms/TDXConnect/protocol/openid-connect/token',
       formData,
-      { 'Content-Type': 'application/x-www-form-urlencoded' }
+      option
     );
   }
 }

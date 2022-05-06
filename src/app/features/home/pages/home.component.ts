@@ -1,10 +1,14 @@
+import { TourismAttraction } from './../../../core/models/tourism-attraction.model';
+import { TourismRestaurant } from './../../../core/models/tourism-restaurant.model';
 import { FormService } from './../../../core/services/form.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { Option } from 'src/app/core/models/option.model';
-import { AttractionService } from 'src/app/core/services/attraction.service';
+import { TourismService } from 'src/app/core/services/tourism.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TokenService } from 'src/app/core/services/token.service';
+import { TourismEvent } from 'src/app/core/models/tourism-event.model';
+import { EMPTY_PICTURE_URL } from 'src/constants';
+import { CITY } from 'src/constants/city';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +19,17 @@ export class HomeComponent implements OnInit {
   searchOptions: Option[];
   selectedSearchOption: string;
   searchForm: FormGroup;
+  /**
+   * @description 首頁每個區塊顯示數量
+   */
+  displayCount = 4;
+  eventData: TourismEvent[];
+  restaurantData: TourismRestaurant[];
+  attractionData: TourismAttraction[];
+  emptyPictureUrl = EMPTY_PICTURE_URL;
   constructor(
     private menuService: MenuService,
+    private tourismService: TourismService,
     private fb: FormBuilder,
     private formService: FormService
   ) {}
@@ -26,6 +39,7 @@ export class HomeComponent implements OnInit {
       searchType: ['', [Validators.required]],
       keyword: ['', [Validators.required]],
     });
+
     this.searchOptions = this.menuService.getNavbar().map((item): Option => {
       return {
         label: item.label,
@@ -36,6 +50,62 @@ export class HomeComponent implements OnInit {
     this.searchForm.patchValue({
       searchType: this.searchOptions[0].value,
     });
+
+    this.tourismService
+      .getEvent({
+        top: this.displayCount,
+        orderby: 'StartTime asc',
+        filter: `StartTime ge ${new Date().toISOString()}`,
+      })
+      .subscribe((request) => {
+        if (request && request.length > 0) {
+          this.eventData = request;
+        } else {
+          this.eventData = [];
+        }
+      });
+
+    this.tourismService
+      .getAttraction({
+        top: this.displayCount,
+      })
+      .subscribe((request) => {
+        this.attractionData = request.map((item): TourismAttraction => {
+          let city = '';
+          for (const [key, value] of Object.entries(CITY)) {
+            if (item.Address.includes(value.label)) {
+              city = value.label;
+            }
+          }
+          return {
+            ...item,
+            City: city,
+          };
+        });
+      });
+
+    this.tourismService
+      .getRestaurant({
+        top: this.displayCount,
+      })
+      .subscribe((request) => {
+        this.restaurantData = request.map((item): TourismRestaurant => {
+          if (item.City) {
+            return item;
+          } else {
+            let city = '';
+            for (const [key, value] of Object.entries(CITY)) {
+              if (item.Address.includes(value.label)) {
+                city = value.label;
+              }
+            }
+            return {
+              ...item,
+              City: city,
+            };
+          }
+        });
+      });
   }
 
   search() {

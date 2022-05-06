@@ -1,5 +1,12 @@
 .mat-grid-tile {
-  .mat-card-subtitle {
+  .card-title {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: $font-bold;
+    color: $text-color-2;
+  }
+
+  .card-subtitle {
     display: flex;
     align-items: center;
     color: $text-color-3;
@@ -7,8 +14,22 @@
   }
 
   .card-img-outer {
+    display: flex;
+    justify-content: center;
+
     overflow: hidden;
     border-radius: $card-img-border-radius;
+  }
+
+  .mat-card-image {
+    transform: scale(1, 1);
+    transition: all 0.5s ease-out;
+  }
+
+  &:hover {
+    .mat-card-image {
+      transform: scale(1.1, 1.1);
+    }
   }
 
   &.common-card {
@@ -32,14 +53,19 @@
       }
     }
 
+    .card-content {
+      width: calc(100% + 32px);
+    }
     .card-img-outer {
       margin-bottom: 10px;
+      height: 180px;
+      overflow: hidden;
     }
 
     .mat-card-image {
       margin-bottom: 0;
       border-radius: $card-border-radius;
-
+      height: 100%;
       &:first-child {
         margin-top: 0;
       }
@@ -60,22 +86,12 @@
     }
     .card-img-outer {
       @include size(160px);
-      display: flex;
-      justify-content: center;
       border-radius: $card-border-radius 0 0 $card-border-radius;
     }
     .mat-card-image {
       @include size(auto, 100%);
       margin: 0px;
       background-size: cover;
-      transform: scale(1, 1);
-      transition: all 0.5s ease-out;
-    }
-
-    &:hover {
-      .mat-card-image {
-        transform: scale(1.1, 1.1);
-      }
     }
 
     .mat-card-title-group {
@@ -96,11 +112,7 @@
       &-title {
         flex: 1;
         width: 100%;
-        font-size: 22px;
-        color: $text-color-2;
-        font-weight: $font-bold;
         margin-top: 3px;
-        line-height: 32px;
       }
       &-footer {
         display: flex;

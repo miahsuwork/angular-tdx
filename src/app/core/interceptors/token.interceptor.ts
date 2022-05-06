@@ -6,20 +6,20 @@ import {
   HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import jsSHA from 'jssha';
-import { RequestHttpHeader } from '../models/request-http-header.model';
+import { StorageService } from '../services/storage.service';
 
 @Injectable()
-export class ApiInterceptor implements HttpInterceptor {
-  constructor() {}
+export class TokenInterceptor implements HttpInterceptor {
+  constructor(private storageService: StorageService) {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request.url.indexOf('Tourism') > 0) {
+    const token = this.storageService.token.getItem();
+    if (token && request.url.indexOf('Tourism') > 0) {
       request = request.clone({
-        headers: request.headers.set('authorization', 'client_credentials'),
+        headers: request.headers.set('authorization', token),
       });
     }
     return next.handle(request);

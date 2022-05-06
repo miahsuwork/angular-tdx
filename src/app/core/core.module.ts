@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ApiInterceptor } from './interceptors/api.interceptor';
+import { TokenInterceptor } from './interceptors/token.interceptor';
+import { HttpErrorInterceptor } from './interceptors/http-error-interceptor';
 
 @NgModule({
   declarations: [],
@@ -9,7 +10,12 @@ import { ApiInterceptor } from './interceptors/api.interceptor';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ApiInterceptor,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true,
     },
   ],

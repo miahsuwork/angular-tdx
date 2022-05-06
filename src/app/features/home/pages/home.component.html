@@ -36,93 +36,42 @@
       </div>
     </div>
     <mat-grid-list cols="2" rowHeight="160px" gutterSize="15px">
-      <mat-grid-tile class="media-card">
+      <mat-grid-tile class="media-card" *ngFor="let item of eventData">
         <mat-card>
           <div class="card-img-outer">
             <img
               mat-card-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-              alt="Photo of a Shiba Inu"
+              [src]="
+                item.Picture.PictureUrl1
+                  ? item.Picture.PictureUrl1
+                  : emptyPictureUrl
+              "
+              [alt]="
+                item.Picture.PictureUrl1
+                  ? item.Picture.PictureDescription1
+                  : item.ActivityName
+              "
             />
           </div>
           <mat-card-title-group>
             <div class="card-content">
-              <div class="card-date">2021/10/30 - 2021/11/13</div>
-              <div class="card-title">Shiba Inu</div>
+              <div class="card-date">
+                {{ item.StartTime | date: "yyyy/MM/dd" }} -
+                {{ item.EndTime | date: "yyyy/MM/dd" }}
+              </div>
+              <div class="card-title">{{ item.ActivityName }}</div>
             </div>
             <div class="card-footer">
-              <mat-card-subtitle class="ic ic-address"
-                >Dog Breed</mat-card-subtitle
-              >
+              <mat-card-subtitle class="ic ic-address">{{
+                item.City
+              }}</mat-card-subtitle>
               <a href="#" class="card-more"
                 >詳細介紹<i class="ic ic-arrow-green-right"></i
               ></a>
             </div>
           </mat-card-title-group> </mat-card
       ></mat-grid-tile>
-      <mat-grid-tile class="media-card">
-        <mat-card>
-          <div class="card-img-outer">
-            <img
-              mat-card-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-              alt="Photo of a Shiba Inu"
-            />
-          </div>
-          <mat-card-title-group>
-            <div class="card-content">
-              <div class="card-date">2021/10/30 - 2021/11/13</div>
-              <div class="card-title">Shiba Inu</div>
-            </div>
-            <div class="card-footer">
-              <mat-card-subtitle class="ic ic-address"
-                >Dog Breed</mat-card-subtitle
-              >
-              <a href="#" class="card-more"
-                >詳細介紹<i class="ic ic-arrow-green-right"></i
-              ></a>
-            </div>
-          </mat-card-title-group> </mat-card
-      ></mat-grid-tile>
-      <mat-grid-tile class="media-card">
-        <mat-card>
-          <div class="card-img-outer">
-            <img
-              mat-card-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-              alt="Photo of a Shiba Inu"
-            />
-          </div>
-          <mat-card-title-group>
-            <div class="card-content">
-              <div class="card-date">2021/10/30 - 2021/11/13</div>
-              <div class="card-title">Shiba Inu</div>
-            </div>
-            <div class="card-footer">
-              <mat-card-subtitle class="ic ic-address"
-                >Dog Breed</mat-card-subtitle
-              >
-              <a href="#" class="card-more"
-                >詳細介紹<i class="ic ic-arrow-green-right"></i
-              ></a>
-            </div>
-          </mat-card-title-group> </mat-card
-      ></mat-grid-tile>
-      <mat-grid-tile>2</mat-grid-tile>
-      <mat-grid-tile>3</mat-grid-tile>
-      <mat-grid-tile>4</mat-grid-tile>
     </mat-grid-list>
-    <div class="home-card card">
-      <div class="card-img"></div>
-      <div>
-        <div class="card-date">2021/10/30 - 2021/11/13</div>
-        <div class="card-title">2021 日月潭花火音樂嘉年華</div>
-        <div>
-          <div class="card-address">南投縣</div>
-          <div class="card-more">詳細介紹</div>
-        </div>
-      </div>
-    </div>
   </div>
   <div class="home-section attraction">
     <div class="home-title">
@@ -133,13 +82,31 @@
         {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
       </div>
     </div>
-    <div class="home-list list">
-      <div class="list-item">
-        <div class="item-img">圖片</div>
-        <div class="item-tite">金都餐廳</div>
-        <div class="item-address">南投縣</div>
-      </div>
-    </div>
+    <mat-grid-list cols="4" rowHeight="270px" gutterSize="15px">
+      <mat-grid-tile class="common-card" *ngFor="let item of attractionData">
+        <div class="card-content">
+          <div class="card-img-outer">
+            <img
+              mat-card-image
+              [src]="
+                item.Picture.PictureUrl1
+                  ? item.Picture.PictureUrl1
+                  : emptyPictureUrl
+              "
+              [alt]="
+                item.Picture.PictureUrl1
+                  ? item.Picture.PictureDescription1
+                  : item.ScenicSpotName
+              "
+            />
+          </div>
+          <div class="">
+            <div class="card-title">{{ item.ScenicSpotName }}</div>
+            <div class="card-subtitle ic-address">{{ item.City }}</div>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
   </div>
   <div class="home-section restaurant">
     <div class="home-title">
@@ -151,22 +118,29 @@
       </div>
     </div>
     <mat-grid-list cols="4" rowHeight="270px" gutterSize="15px">
-      <mat-grid-tile class="common-card">
-        <mat-card>
-          <img
-            mat-card-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-            alt="Photo of a Shiba Inu"
-          />
-          <mat-card-header>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle class="ic-address">Dog Breed</mat-card-subtitle>
-          </mat-card-header>
-        </mat-card></mat-grid-tile
-      >
-      <mat-grid-tile>2</mat-grid-tile>
-      <mat-grid-tile>3</mat-grid-tile>
-      <mat-grid-tile>4</mat-grid-tile>
+      <mat-grid-tile class="common-card" *ngFor="let item of restaurantData">
+        <div class="card-content">
+          <div class="card-img-outer">
+            <img
+              mat-card-image
+              [src]="
+                item.Picture.PictureUrl1
+                  ? item.Picture.PictureUrl1
+                  : emptyPictureUrl
+              "
+              [alt]="
+                item.Picture.PictureUrl1
+                  ? item.Picture.PictureDescription1
+                  : item.RestaurantName
+              "
+            />
+          </div>
+          <div class="">
+            <div class="card-title">{{ item.RestaurantName }}</div>
+            <div class="card-subtitle ic-address">{{ item.City }}</div>
+          </div>
+        </div>
+      </mat-grid-tile>
     </mat-grid-list>
   </div>
 </div>
