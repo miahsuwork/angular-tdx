@@ -1,0 +1,25 @@
+<div class="layout-footer">
+  <div class="layout-content">
+    <div>
+      <div>
+        <a mat-button>{{ "admin" | translate }}</a>
+      </div>
+    </div>
+    <div class="layout-footer-copyright">
+      <span>{{ "copyright" | translate: { year: year } }}</span> |
+      <span>{{ "data-source" | translate }}</span>
+    </div>
+    <div class="btn-group">
+      <button
+        mat-button
+        *ngFor="let language of languageList"
+        [ngClass]="
+          language.value === currentLanguage ? 'text-secondary-color' : ''
+        "
+        (click)="changeLanguage(language.value)"
+      >
+        {{ language.label | translate }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,172 @@
+<div class="layout-content">
+  <div class="home-section">
+    <div class="home-description">
+      <div [innerHTML]="'home.title' | translate"></div>
+      <div class="home-sub-description">
+        <i class="ic ic-address-yellow"></i
+        >{{ "taiwan-travel-guide" | translate }}
+      </div>
+    </div>
+    <form class="home-form form" [formGroup]="searchForm">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "common.type" | translate }}</mat-label>
+        <mat-select formControlName="searchType">
+          <mat-option *ngFor="let item of searchOptions" [value]="item.value">
+            {{ "navbar." + item.label | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>{{ "common.keyword-placeholder" | translate }}</mat-label>
+        <input matInput formControlName="keyword" />
+      </mat-form-field>
+      <button mat-flat-button color="primary" class="w-100" (click)="search()">
+        {{ "common.search" | translate }}
+      </button>
+    </form>
+  </div>
+  <div class="home-section carousel"></div>
+  <div class="home-section event">
+    <div class="home-title">
+      <div class="home-title-text">
+        {{ "home.recent-event" | translate }}
+      </div>
+      <div class="home-title-more">
+        {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
+      </div>
+    </div>
+    <mat-grid-list cols="2" rowHeight="160px" gutterSize="15px">
+      <mat-grid-tile class="media-card">
+        <mat-card>
+          <div class="card-img-outer">
+            <img
+              mat-card-image
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              alt="Photo of a Shiba Inu"
+            />
+          </div>
+          <mat-card-title-group>
+            <div class="card-content">
+              <div class="card-date">2021/10/30 - 2021/11/13</div>
+              <div class="card-title">Shiba Inu</div>
+            </div>
+            <div class="card-footer">
+              <mat-card-subtitle class="ic ic-address"
+                >Dog Breed</mat-card-subtitle
+              >
+              <a href="#" class="card-more"
+                >詳細介紹<i class="ic ic-arrow-green-right"></i
+              ></a>
+            </div>
+          </mat-card-title-group> </mat-card
+      ></mat-grid-tile>
+      <mat-grid-tile class="media-card">
+        <mat-card>
+          <div class="card-img-outer">
+            <img
+              mat-card-image
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              alt="Photo of a Shiba Inu"
+            />
+          </div>
+          <mat-card-title-group>
+            <div class="card-content">
+              <div class="card-date">2021/10/30 - 2021/11/13</div>
+              <div class="card-title">Shiba Inu</div>
+            </div>
+            <div class="card-footer">
+              <mat-card-subtitle class="ic ic-address"
+                >Dog Breed</mat-card-subtitle
+              >
+              <a href="#" class="card-more"
+                >詳細介紹<i class="ic ic-arrow-green-right"></i
+              ></a>
+            </div>
+          </mat-card-title-group> </mat-card
+      ></mat-grid-tile>
+      <mat-grid-tile class="media-card">
+        <mat-card>
+          <div class="card-img-outer">
+            <img
+              mat-card-image
+              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+              alt="Photo of a Shiba Inu"
+            />
+          </div>
+          <mat-card-title-group>
+            <div class="card-content">
+              <div class="card-date">2021/10/30 - 2021/11/13</div>
+              <div class="card-title">Shiba Inu</div>
+            </div>
+            <div class="card-footer">
+              <mat-card-subtitle class="ic ic-address"
+                >Dog Breed</mat-card-subtitle
+              >
+              <a href="#" class="card-more"
+                >詳細介紹<i class="ic ic-arrow-green-right"></i
+              ></a>
+            </div>
+          </mat-card-title-group> </mat-card
+      ></mat-grid-tile>
+      <mat-grid-tile>2</mat-grid-tile>
+      <mat-grid-tile>3</mat-grid-tile>
+      <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list>
+    <div class="home-card card">
+      <div class="card-img"></div>
+      <div>
+        <div class="card-date">2021/10/30 - 2021/11/13</div>
+        <div class="card-title">2021 日月潭花火音樂嘉年華</div>
+        <div>
+          <div class="card-address">南投縣</div>
+          <div class="card-more">詳細介紹</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="home-section attraction">
+    <div class="home-title">
+      <div class="home-title-text">
+        {{ "home.popular-attractions" | translate }}
+      </div>
+      <div class="home-title-more">
+        {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
+      </div>
+    </div>
+    <div class="home-list list">
+      <div class="list-item">
+        <div class="item-img">圖片</div>
+        <div class="item-tite">金都餐廳</div>
+        <div class="item-address">南投縣</div>
+      </div>
+    </div>
+  </div>
+  <div class="home-section restaurant">
+    <div class="home-title">
+      <div class="home-title-text">
+        {{ "home.popular-restaurant" | translate }}
+      </div>
+      <div class="home-title-more">
+        {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
+      </div>
+    </div>
+    <mat-grid-list cols="4" rowHeight="270px" gutterSize="15px">
+      <mat-grid-tile class="common-card">
+        <mat-card>
+          <img
+            mat-card-image
+            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+            alt="Photo of a Shiba Inu"
+          />
+          <mat-card-header>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle class="ic-address">Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+        </mat-card></mat-grid-tile
+      >
+      <mat-grid-tile>2</mat-grid-tile>
+      <mat-grid-tile>3</mat-grid-tile>
+      <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

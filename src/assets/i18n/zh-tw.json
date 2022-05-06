@@ -1,0 +1,25 @@
+{
+  "navbar": {
+    "attraction": "探索景點",
+    "event": "節慶活動",
+    "restaurant": "在地美食"
+  },
+  "copyright": "版權所有 @ {{year}} 台灣走走所有",
+  "admin": "後台管理",
+  "zh-tw": "繁體中文",
+  "en": "英文",
+  "data-source": "資料來源：運輸資料流通服務平臺, TDX",
+  "common": {
+    "search": "搜尋",
+    "type": "類別",
+    "keyword-placeholder": "你想去哪裡？請輸入關鍵字",
+    "more": "查看更多"
+  },
+  "taiwan-travel-guide": "台灣旅遊景點導覽",
+  "home": {
+    "title": "探索<span class='text-height-line'>台灣之美</span><br />讓我們更親近這片土地",
+    "recent-event": "近期活動",
+    "popular-attractions": "熱門打卡景點",
+    "popular-restaurant": "一再回訪美食"
+  }
+}
