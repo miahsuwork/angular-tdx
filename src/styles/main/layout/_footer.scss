@@ -1,0 +1,24 @@
+.layout-footer {
+  background-color: $footer-background-color;
+  color: $footer-color;
+  font-size: $footer-font-size;
+  height: $footer-height;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .layout-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .mat-button {
+    font-size: $footer-font-size;
+  }
+  &-copyright {
+    @include position-center();
+  }
+}

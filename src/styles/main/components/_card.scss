@@ -1,0 +1,119 @@
+.mat-grid-tile {
+  .mat-card-subtitle {
+    display: flex;
+    align-items: center;
+    color: $text-color-3;
+    margin: 0;
+  }
+
+  .card-img-outer {
+    overflow: hidden;
+    border-radius: $card-img-border-radius;
+  }
+
+  &.common-card {
+    .mat-card {
+      box-shadow: none;
+      height: 100%;
+      border-radius: $card-border-radius;
+    }
+
+    .mat-card-subtitle:not(:first-child) {
+      margin: 0;
+    }
+
+    .mat-card-header {
+      &-text {
+        margin: 0;
+      }
+      .mat-card-title {
+        color: $text-color-2;
+        margin-bottom: 6px;
+      }
+    }
+
+    .card-img-outer {
+      margin-bottom: 10px;
+    }
+
+    .mat-card-image {
+      margin-bottom: 0;
+      border-radius: $card-border-radius;
+
+      &:first-child {
+        margin-top: 0;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+  &.media-card {
+    border-radius: $card-border-radius;
+    background-color: $body-background-secondary-color;
+    .mat-card {
+      width: 100%;
+      background: transparent;
+      display: flex;
+      height: 100%;
+      padding: 0;
+    }
+    .card-img-outer {
+      @include size(160px);
+      display: flex;
+      justify-content: center;
+      border-radius: $card-border-radius 0 0 $card-border-radius;
+    }
+    .mat-card-image {
+      @include size(auto, 100%);
+      margin: 0px;
+      background-size: cover;
+      transform: scale(1, 1);
+      transition: all 0.5s ease-out;
+    }
+
+    &:hover {
+      .mat-card-image {
+        transform: scale(1.1, 1.1);
+      }
+    }
+
+    .mat-card-title-group {
+      padding: 30px 16px;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      flex: 1;
+      flex-direction: column;
+    }
+    .card {
+      &-content {
+        flex: 1;
+      }
+      &-date {
+        width: 100%;
+        color: $text-color-3;
+      }
+      &-title {
+        flex: 1;
+        width: 100%;
+        font-size: 22px;
+        color: $text-color-2;
+        font-weight: $font-bold;
+        margin-top: 3px;
+        line-height: 32px;
+      }
+      &-footer {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+      &-more {
+        text-decoration: none;
+        color: $primary-color-2;
+        font-weight: $font-bold;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

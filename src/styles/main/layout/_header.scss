@@ -1,0 +1,50 @@
+.layout-header {
+  position: fixed;
+  width: 100%;
+  height: $header-height;
+  top: 0;
+  background-color: $header-background-color;
+  border: 1px solid $section-border-color;
+  z-index: 10;
+  .layout-content {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .mat-nav-list {
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+    .mat-list-item {
+      font-size: $font-size-zh;
+      width: auto;
+    }
+    .mat-list-item-content {
+      justify-content: center;
+    }
+    a {
+      border-radius: $button-border-radius;
+      margin: 0px 10px;
+      &.active {
+        background: $primary-color-1;
+        color: #fff;
+      }
+    }
+  }
+}
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  h1 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.en {
+  .mat-list-item {
+    font-size: $font-size-en;
+  }
+}

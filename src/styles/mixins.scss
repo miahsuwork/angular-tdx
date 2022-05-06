@@ -1,0 +1,59 @@
+@mixin icon($size) {
+  display: inline-block;
+  content: "";
+  width: $size;
+  height: $size;
+  background-size: $size;
+}
+
+/* size */
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/* pseudo */
+@mixin pseudo($display: block, $content: "") {
+  content: $content;
+  display: $display;
+}
+
+/* 置中 */
+@mixin position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+@mixin positionX-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@mixin positionY-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin flex($j: null, $a: null) {
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+}
+
+/* 動畫效果 */
+@mixin tran($ani-speed: 0.3s, $ani-delay: null, $ani-property: all) {
+  transition-duration: $ani-speed;
+  transition-property: $ani-property;
+  transition-delay: $ani-delay;
+}
+
+/* text */
+@mixin text($size: null, $weight: null, $color: null) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

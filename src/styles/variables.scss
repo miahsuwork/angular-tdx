@@ -1,0 +1,42 @@
+@import "colors";
+
+/* corporation identity system */
+$primary-color-1: $green-500;
+$primary-color-2: $green-300;
+$primary-color-3: $green-800;
+$secondary-color-1: $yellow-500;
+$secondary-color-2: $yellow-300;
+$alert-color-1: $orange-500;
+
+$text-color-1: $grey-900;
+$text-color-2: $grey-800;
+$text-color-3: $grey-400;
+
+/* base */
+$body-background-primary-color: #fff;
+$body-background-secondary-color: $grey-50;
+$font-family: Roboto, "Helvetica Neue", sans-serif;
+$font-bold: 600;
+$font-size-zh: 16px;
+$font-size-en: 14px;
+
+$icon-md-size: 22px;
+$icon-lg-size: 40px;
+
+$card-img-border-radius: 20px;
+$card-border-radius: 12px;
+$section-border-radius: 5px;
+$section-border-color: $grey-100;
+
+/* header */
+$header-height: 80px;
+$header-background-color: #fff;
+
+/* footer */
+$footer-height: 70px;
+$footer-background-color: $green-500;
+$footer-color: #fff;
+$footer-font-size: 12px;
+
+/* button */
+$button-border-radius: 6px;

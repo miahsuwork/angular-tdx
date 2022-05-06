@@ -1,0 +1,25 @@
+.ic {
+  display: flex;
+}
+
+.ic-address::before {
+  @include icon(16px);
+  background-image: url("../../../assets/images/ic-address.svg");
+  margin-right: 3px;
+}
+.ic-address-yellow::before {
+  @include icon(24px);
+  background-image: url("../../../assets/images/ic-address-yellow.svg");
+  margin-right: 3px;
+}
+
+.ic-arrow-green-right::before {
+  @include icon(16px);
+  background-image: url("../../../assets/images/ic-arrow-green-right.svg");
+  margin-left: 3px;
+}
+.ic-arrow-orange-right::before {
+  @include icon(16px);
+  background-image: url("../../../assets/images/ic-arrow-orange-right.svg");
+  margin-left: 3px;
+}
