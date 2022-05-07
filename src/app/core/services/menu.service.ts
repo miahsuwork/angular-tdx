@@ -8,16 +8,16 @@ import { Injectable } from '@angular/core';
 export class MenuService {
   navbar: MenuItem[] = [
     {
-      label: 'attraction',
-      url: '/attraction',
+      label: 'scenic-spot',
+      url: '/Search/ScenicSpot',
     },
     {
-      label: 'event',
-      url: '/event',
+      label: 'activity',
+      url: '/Search/Activity',
     },
     {
       label: 'restaurant',
-      url: '/restaurant',
+      url: '/Search/Restaurant',
     },
   ];
 

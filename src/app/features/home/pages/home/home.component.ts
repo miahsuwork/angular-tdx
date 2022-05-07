@@ -1,14 +1,15 @@
-import { TourismAttraction } from './../../../core/models/tourism-attraction.model';
-import { TourismRestaurant } from './../../../core/models/tourism-restaurant.model';
-import { FormService } from './../../../core/services/form.service';
+import { TourismType } from '../../../../core/enums/tourism-type.enum';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { Option } from 'src/app/core/models/option.model';
 import { TourismService } from 'src/app/core/services/tourism.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TourismEvent } from 'src/app/core/models/tourism-event.model';
+import { TourismActivity } from 'src/app/core/models/tourism-activity.model';
 import { EMPTY_PICTURE_URL } from 'src/constants';
-import { CITY } from 'src/constants/city';
+import { TourismRestaurant } from 'src/app/core/models/tourism-restaurant.model';
+import { TourismScenicSpot } from 'src/app/core/models/tourism-scenic-spot.model';
+import { FormService } from 'src/app/core/services/form.service';
+import { getCity } from 'src/app/core/utils/city-helper';
 
 @Component({
   selector: 'app-home',
@@ -23,10 +24,11 @@ export class HomeComponent implements OnInit {
    * @description 首頁每個區塊顯示數量
    */
   displayCount = 4;
-  eventData: TourismEvent[];
+  activityData: TourismActivity[];
   restaurantData: TourismRestaurant[];
-  attractionData: TourismAttraction[];
+  scenicSpotData: TourismScenicSpot[];
   emptyPictureUrl = EMPTY_PICTURE_URL;
+  searchType = TourismType;
   constructor(
     private menuService: MenuService,
     private tourismService: TourismService,
@@ -52,31 +54,26 @@ export class HomeComponent implements OnInit {
     });
 
     this.tourismService
-      .getEvent({
+      .getActivity({
         top: this.displayCount,
         orderby: 'StartTime asc',
         filter: `StartTime ge ${new Date().toISOString()}`,
       })
       .subscribe((request) => {
         if (request && request.length > 0) {
-          this.eventData = request;
+          this.activityData = request;
         } else {
-          this.eventData = [];
+          this.activityData = [];
         }
       });
 
     this.tourismService
-      .getAttraction({
+      .getScenicSpot({
         top: this.displayCount,
       })
       .subscribe((request) => {
-        this.attractionData = request.map((item): TourismAttraction => {
-          let city = '';
-          for (const [key, value] of Object.entries(CITY)) {
-            if (item.Address.includes(value.label)) {
-              city = value.label;
-            }
-          }
+        this.scenicSpotData = request.map((item): TourismScenicSpot => {
+          const city = getCity(item.Address);
           return {
             ...item,
             City: city,
@@ -90,20 +87,10 @@ export class HomeComponent implements OnInit {
       })
       .subscribe((request) => {
         this.restaurantData = request.map((item): TourismRestaurant => {
-          if (item.City) {
-            return item;
-          } else {
-            let city = '';
-            for (const [key, value] of Object.entries(CITY)) {
-              if (item.Address.includes(value.label)) {
-                city = value.label;
-              }
-            }
-            return {
-              ...item,
-              City: city,
-            };
-          }
+          return {
+            ...item,
+            City: item.City ? item.City : getCity(item.Address),
+          };
         });
       });
   }

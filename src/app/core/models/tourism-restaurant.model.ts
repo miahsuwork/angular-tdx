@@ -1,3 +1,5 @@
+import { TourismPicture } from './tourism-picture.model';
+
 export interface TourismRestaurant {
   RestaurantID: string;
   RestaurantName: string;
@@ -8,17 +10,9 @@ export interface TourismRestaurant {
   City: string;
   OpenTime: string;
   WebsiteUrl: string;
-  Picture: {
-    PictureDescription1?: string;
-    PictureDescription2?: string;
-    PictureDescription3?: string;
-    PictureUrl1?: string;
-    PictureUrl2?: string;
-    PictureUrl3?: string;
-  };
+  Picture: TourismPicture;
   Position: { PositionLon: number; PositionLat: number; GeoHash: string };
   Class: string;
-  Class2?: string;
   SrcUpdateTime: string;
   UpdateTime: string;
 }

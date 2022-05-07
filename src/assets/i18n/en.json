@@ -1,8 +1,8 @@
 {
   "navbar": {
-    "attraction": "Explore attractions",
-    "event": "Festivals",
-    "restaurant": "Local food"
+    "scenic-spot": "Explore Scenic Spot",
+    "activity": "Activity",
+    "restaurant": "Local Food"
   },
   "copyright": "Copyright @ {{year}} TRAVEL. All rights reserved",
   "admin": "Admin",
@@ -13,13 +13,14 @@
     "search": "search",
     "type": "type",
     "keyword-placeholder": "where do you want to go? please enter key words",
-    "more": "more"
+    "more": "more",
+    "detailed": "detailed"
   },
   "taiwan-travel-guide": "Taiwan Travel Guide",
   "home": {
     "title": "Discover<span class='text-height-line'> the beauty of Formosa.</span><br />Bring us closer to this land.",
-    "recent-event": "Recent Event",
-    "popular-attractions": "Popular Attractions",
+    "recent-activity": "Recent Activity",
+    "popular-scenic-spot": "Popular Scenic Spot",
     "popular-restaurant": "Popular Restaurant"
   }
 }

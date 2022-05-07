@@ -29,14 +29,17 @@
   <div class="home-section event">
     <div class="home-title">
       <div class="home-title-text">
-        {{ "home.recent-event" | translate }}
+        {{ "home.recent-activity" | translate }}
       </div>
-      <div class="home-title-more">
+      <a
+        [routerLink]="['/Search', searchType.ACTIVITY]"
+        class="home-title-more"
+      >
         {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
-      </div>
+      </a>
     </div>
     <mat-grid-list cols="2" rowHeight="160px" gutterSize="15px">
-      <mat-grid-tile class="media-card" *ngFor="let item of eventData">
+      <mat-grid-tile class="media-card" *ngFor="let item of activityData">
         <mat-card>
           <div class="card-img-outer">
             <img
@@ -62,11 +65,12 @@
               <div class="card-title">{{ item.ActivityName }}</div>
             </div>
             <div class="card-footer">
-              <mat-card-subtitle class="ic ic-address">{{
-                item.City
-              }}</mat-card-subtitle>
-              <a href="#" class="card-more"
-                >詳細介紹<i class="ic ic-arrow-green-right"></i
+              <div class="card-city ic ic-address">{{ item.City }}</div>
+              <a
+                [routerLink]="['/Search', searchType.ACTIVITY, item.ActivityID]"
+                class="card-more"
+                >{{ "common.detailed" | translate
+                }}<i class="ic ic-arrow-green-right"></i
               ></a>
             </div>
           </mat-card-title-group> </mat-card
@@ -76,15 +80,21 @@
   <div class="home-section attraction">
     <div class="home-title">
       <div class="home-title-text">
-        {{ "home.popular-attractions" | translate }}
+        {{ "home.popular-scenic-spot" | translate }}
       </div>
-      <div class="home-title-more">
+      <a
+        [routerLink]="['/Search', searchType.SCENIC_SPOT]"
+        class="home-title-more"
+      >
         {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
-      </div>
+      </a>
     </div>
     <mat-grid-list cols="4" rowHeight="270px" gutterSize="15px">
-      <mat-grid-tile class="common-card" *ngFor="let item of attractionData">
-        <div class="card-content">
+      <mat-grid-tile class="common-card" *ngFor="let item of scenicSpotData">
+        <a
+          class="card-content"
+          [routerLink]="['/Search', searchType.SCENIC_SPOT, item.ScenicSpotID]"
+        >
           <div class="card-img-outer">
             <img
               mat-card-image
@@ -101,10 +111,10 @@
             />
           </div>
           <div class="">
+            <div class="card-city ic-address">{{ item.City }}</div>
             <div class="card-title">{{ item.ScenicSpotName }}</div>
-            <div class="card-subtitle ic-address">{{ item.City }}</div>
           </div>
-        </div>
+        </a>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
@@ -113,13 +123,19 @@
       <div class="home-title-text">
         {{ "home.popular-restaurant" | translate }}
       </div>
-      <div class="home-title-more">
+      <a
+        class="home-title-more"
+        [routerLink]="['/Search', searchType.RESTAURANT]"
+      >
         {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
-      </div>
+      </a>
     </div>
     <mat-grid-list cols="4" rowHeight="270px" gutterSize="15px">
       <mat-grid-tile class="common-card" *ngFor="let item of restaurantData">
-        <div class="card-content">
+        <a
+          class="card-content"
+          [routerLink]="['/Search', searchType.RESTAURANT, item.RestaurantID]"
+        >
           <div class="card-img-outer">
             <img
               mat-card-image
@@ -136,10 +152,10 @@
             />
           </div>
           <div class="">
+            <div class="card-city ic-address">{{ item.City }}</div>
             <div class="card-title">{{ item.RestaurantName }}</div>
-            <div class="card-subtitle ic-address">{{ item.City }}</div>
           </div>
-        </div>
+        </a>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

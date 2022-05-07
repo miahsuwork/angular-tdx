@@ -6,7 +6,7 @@
     color: $text-color-2;
   }
 
-  .card-subtitle {
+  .card-city {
     display: flex;
     align-items: center;
     color: $text-color-3;
@@ -33,35 +33,25 @@
   }
 
   &.common-card {
+    .mat-grid-tile-content {
+      display: flex;
+      align-items: flex-start;
+    }
     .mat-card {
       box-shadow: none;
       height: 100%;
       border-radius: $card-border-radius;
     }
 
-    .mat-card-subtitle:not(:first-child) {
-      margin: 0;
-    }
-
-    .mat-card-header {
-      &-text {
-        margin: 0;
-      }
-      .mat-card-title {
-        color: $text-color-2;
-        margin-bottom: 6px;
-      }
-    }
-
     .card-content {
       width: calc(100% + 32px);
+      text-decoration: none;
     }
     .card-img-outer {
       margin-bottom: 10px;
       height: 180px;
       overflow: hidden;
     }
-
     .mat-card-image {
       margin-bottom: 0;
       border-radius: $card-border-radius;
@@ -95,7 +85,7 @@
     }
 
     .mat-card-title-group {
-      padding: 30px 16px;
+      padding: 20px 16px 16px;
       flex-wrap: wrap;
       box-sizing: border-box;
       flex: 1;

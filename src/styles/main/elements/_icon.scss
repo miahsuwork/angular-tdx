@@ -23,3 +23,18 @@
   background-image: url("../../../assets/images/ic-arrow-orange-right.svg");
   margin-left: 3px;
 }
+
+.ic-nearby {
+  &-scenic-spot::before {
+    @include icon(30px);
+    background-image: url("../../../assets/images/ic-nearby-scenic-spot.svg");
+  }
+  &-activity::before {
+    @include icon(30px);
+    background-image: url("../../../assets/images/ic-nearby-activity.svg");
+  }
+  &-restaurant::before {
+    @include icon(30px);
+    background-image: url("../../../assets/images/ic-nearby-restaurant.svg");
+  }
+}

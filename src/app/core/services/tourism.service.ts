@@ -4,9 +4,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { TourismParameters } from '../models/tourism-parameter.model';
-import { TourismEvent } from '../models/tourism-event.model';
+import { TourismActivity } from '../models/tourism-activity.model';
 import { TourismRestaurant } from '../models/tourism-restaurant.model';
-import { TourismAttraction } from '../models/tourism-attraction.model';
+import { TourismScenicSpot } from '../models/tourism-scenic-spot.model';
 
 @Injectable({
   providedIn: 'root',
@@ -22,10 +22,10 @@ export class TourismService extends ApiBaseService {
    * @param city 查詢特定城市
    * @returns 觀光景點查詢結果
    */
-  getAttraction(
+  getScenicSpot(
     parameters: TourismParameters,
     city: string = ''
-  ): Observable<TourismAttraction[]> {
+  ): Observable<TourismScenicSpot[]> {
     const httpParams = this.getHttpParams(parameters);
     return this.get(`/api/basic/v2/Tourism/ScenicSpot/${city}`, httpParams);
   }
@@ -50,10 +50,10 @@ export class TourismService extends ApiBaseService {
    * @param city 查詢特定城市
    * @returns 觀光活動查詢結果
    */
-  getEvent(
+  getActivity(
     parameters: TourismParameters,
     city: string = ''
-  ): Observable<TourismEvent[]> {
+  ): Observable<TourismActivity[]> {
     const httpParams = this.getHttpParams(parameters);
     return this.get(`/api/basic/v2/Tourism/Activity/${city}`, httpParams);
   }

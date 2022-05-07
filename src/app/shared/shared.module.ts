@@ -10,6 +10,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SafePipe } from './pipes/safe.pipe';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 const materialModules = [
   MatListModule,
@@ -21,15 +24,18 @@ const materialModules = [
   MatInputModule,
   MatCardModule,
   MatGridListModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [SafePipe],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, ...materialModules],
   exports: [
+    SafePipe,
     FormsModule,
     ReactiveFormsModule,
     TranslateModule,
+    OverlayModule,
     ...materialModules,
   ],
 })
