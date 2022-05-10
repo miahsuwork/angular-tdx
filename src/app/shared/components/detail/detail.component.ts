@@ -33,7 +33,7 @@ export class DetailComponent implements OnInit {
     private tourismService: TourismService
   ) {}
 
-  getRandom(min, max): number {
+  getRandom(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
@@ -232,10 +232,10 @@ export class DetailComponent implements OnInit {
             };
           }
           return {
+            picture,
             id: item.ScenicSpotID,
             name: item.ScenicSpotName,
             city: item.City ? item.City : getCity(item.Address),
-            picture,
           };
         });
       });
@@ -259,10 +259,10 @@ export class DetailComponent implements OnInit {
             };
           }
           return {
+            picture,
             id: item.ActivityID,
             name: item.ActivityName,
             city: item.City ? item.City : getCity(item.Address),
-            picture,
           };
         });
       });
@@ -286,10 +286,10 @@ export class DetailComponent implements OnInit {
             };
           }
           return {
+            picture,
             id: item.RestaurantID,
             name: item.RestaurantName,
             city: item.City ? item.City : getCity(item.Address),
-            picture,
           };
         });
       });

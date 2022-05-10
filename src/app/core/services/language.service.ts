@@ -19,6 +19,7 @@ export class LanguageService {
   setInitState(): void {
     this.translateService.addLangs([Language.EN, Language.TW]);
     // 如果是繁體/簡體就顯示繁體，否則都顯示英文
+
     const browserLang = this.translateService.getBrowserLang().includes('zh')
       ? Language.TW
       : Language.EN;

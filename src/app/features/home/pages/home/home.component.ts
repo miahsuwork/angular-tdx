@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  search() {
+  search(): void {
     if (this.searchForm.valid) {
     } else {
       this.formService.validateAllFormFields(this.searchForm);

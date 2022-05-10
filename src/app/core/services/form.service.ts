@@ -77,6 +77,7 @@ export class FormService {
         control.markAsUntouched({ onlySelf: true });
         if (!control.value) {
           // 先輸入再刪除的情況下會需要 reset 才能取消必填
+
           control.reset();
         }
       } else if (control instanceof FormGroup || control instanceof FormArray) {
@@ -93,6 +94,7 @@ export class FormService {
     formControl.markAsUntouched({ onlySelf: true });
     if (!formControl.value) {
       // 先輸入再刪除的情況下會需要 reset 才能取消必填
+
       formControl.reset();
     }
   }

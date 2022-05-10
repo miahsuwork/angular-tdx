@@ -11,8 +11,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CoreModule } from './core/core.module';
-// AoT requires an exported function for factories
-export function createTranslateLoader(http: HttpClient) {
+
+/**
+ * @description 建立語系檔的讀取器
+ * @param http HttpClient
+ * @returns 語系檔的讀取器
+ */
+export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 
