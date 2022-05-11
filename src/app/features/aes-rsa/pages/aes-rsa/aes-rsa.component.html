@@ -1,0 +1,39 @@
+<mat-grid-list cols="4" rowHeight="150" class="aes-rsa-content">
+  <mat-grid-tile [colspan]="4">
+    <div class="section">
+      <div class="section-title">PublicKey:</div>
+      <div>
+        {{ publicKey }}
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="4">
+    <form class="section form">
+      <mat-form-field appearance="outline">
+        <mat-label>機敏資料</mat-label>
+        <input matInput placeholder="身份字號" [formControl]="formData" />
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="sendData()">送出</button>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="4">
+    <div class="section" *ngIf="requestData">
+      <div class="section-title">Request</div>
+      <div class="data">
+        <div class="data-title">RSA 加密 AES Key：</div>
+        <div class="data-content">{{ requestData.encryptKey }}</div>
+        <div class="data-title">AES 加密資料：</div>
+        <div class="data-content">{{ requestData.encryptData }}</div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="4">
+    <div class="section" *ngIf="responseData">
+      <div class="section-title">Response</div>
+      <div class="data">
+        <div class="data-title">解密結果：</div>
+        <div class="data-content">{{ responseData.data }}</div>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

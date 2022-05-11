@@ -12,6 +12,11 @@ const routes: Routes = [
       import('./features/proxy/proxy.module').then((m) => m.ProxyModule),
   },
   {
+    path: 'aes-rsa',
+    loadChildren: () =>
+      import('./features/aes-rsa/aes-rsa.module').then((m) => m.AesRsaModule),
+  },
+  {
     path: '',
     component: LayoutComponent,
     canActivate: [AuthGuard],
