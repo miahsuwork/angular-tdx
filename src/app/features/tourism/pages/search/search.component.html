@@ -1,1 +1,40 @@
-<p>search works!</p>
+<div class="page-search">
+  <div class="title">{{ "navbar." + searchType | translate }}</div>
+  <form>
+    <form class="form" [formGroup]="searchForm">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ "common.city" | translate }}</mat-label>
+        <mat-select formControlName="city">
+          <mat-option *ngFor="let item of cityOptions" [value]="item.value">
+            {{ item.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="keyword" appearance="outline">
+        <mat-label>{{ "common.keyword-placeholder" | translate }}</mat-label>
+        <input matInput formControlName="keyword" />
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="search()">
+        {{ "common.search" | translate }}
+      </button>
+    </form>
+  </form>
+
+  <mat-grid-list cols="4" rowHeight="300px" gutterSize="15px">
+    <mat-grid-tile class="common-card" *ngFor="let item of resultData">
+      <a class="card-content" [routerLink]="['/search', searchType, item.id]">
+        <div class="card-img-outer">
+          <img
+            mat-card-image
+            [src]="item.picture ? item.picture.pictureUrl : emptyPictureUrl"
+            [alt]="item.picture ? item.picture.pictureDescription : item.name"
+          />
+        </div>
+        <div class="">
+          <div class="card-city ic-address">{{ item.city }}</div>
+          <div class="card-title">{{ item.name }}</div>
+        </div>
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

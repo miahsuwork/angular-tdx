@@ -14,7 +14,8 @@
     "type": "類別",
     "keyword-placeholder": "你想去哪裡？請輸入關鍵字",
     "more": "查看更多",
-    "detailed": "詳細介紹"
+    "detailed": "詳細介紹",
+    "city": "縣市"
   },
   "taiwan-travel-guide": "台灣旅遊景點導覽",
   "home": {
@@ -22,5 +23,10 @@
     "recent-activity": "近期活動",
     "popular-scenic-spot": "熱門打卡景點",
     "popular-restaurant": "一再回訪美食"
+  },
+  "recommended-items": {
+    "scenic-spot": "景點",
+    "activity": "活動",
+    "restaurant": "美食"
   }
 }

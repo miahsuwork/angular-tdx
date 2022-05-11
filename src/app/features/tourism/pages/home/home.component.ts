@@ -2,7 +2,12 @@ import { TourismType } from '../../../../core/enums/tourism-type.enum';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { Option } from 'src/app/core/models/option.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { TourismActivity } from 'src/app/features/tourism/models/tourism-activity.model';
 import { EMPTY_PICTURE_URL } from 'src/constants';
 import { FormService } from 'src/app/core/services/form.service';
@@ -10,6 +15,7 @@ import { getCity } from 'src/app/core/utils/city-helper';
 import { TourismRestaurant } from '../../models/tourism-restaurant.model';
 import { TourismScenicSpot } from '../../models/tourism-scenic-spot.model';
 import { TourismService } from '../../services/tourism.service';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -29,16 +35,26 @@ export class HomeComponent implements OnInit {
   scenicSpotData: TourismScenicSpot[];
   emptyPictureUrl = EMPTY_PICTURE_URL;
   searchType = TourismType;
+
+  get searchOperation(): AbstractControl | null {
+    return this.searchForm.get(['searchOperation']);
+  }
+
+  get keyword(): AbstractControl | null {
+    return this.searchForm.get(['keyword']);
+  }
+
   constructor(
     private menuService: MenuService,
     private tourismService: TourismService,
     private fb: FormBuilder,
-    private formService: FormService
+    private formService: FormService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
-      searchType: ['', [Validators.required]],
+      searchOperation: ['', [Validators.required]],
       keyword: ['', [Validators.required]],
     });
 
@@ -96,9 +112,17 @@ export class HomeComponent implements OnInit {
   }
 
   search(): void {
-    if (this.searchForm.valid) {
-    } else {
+    if (this.searchForm.invalid) {
       this.formService.validateAllFormFields(this.searchForm);
+      return;
     }
+
+    const options: NavigationExtras = {
+      queryParams: {
+        keyword: this.keyword.value,
+      },
+    };
+
+    this.router.navigate([`search/${this.searchOperation.value}`], options);
   }
 }

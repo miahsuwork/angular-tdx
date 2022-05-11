@@ -97,10 +97,12 @@
     </mat-grid-tile>
   </mat-grid-list>
   <div *ngIf="!!nearbyDataList">
-    <div class="detail-title">還有這些不能錯過的景點</div>
+    <div class="detail-title">
+      還有這些不能錯過的{{ "recommended-items." + searchType | translate }}
+    </div>
     <mat-grid-list cols="4" rowHeight="270px" gutterSize="15px">
       <mat-grid-tile class="common-card" *ngFor="let item of nearbyDataList">
-        <a class="card-content" [routerLink]="['/Search', searchType, item.id]">
+        <a class="card-content" [routerLink]="['/search', searchType, item.id]">
           <div class="card-img-outer">
             <img
               mat-card-image

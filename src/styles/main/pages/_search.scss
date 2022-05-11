@@ -1,0 +1,27 @@
+.page-search {
+  .title {
+    font-size: 36px;
+    font-weight: $font-bold;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    line-height: 1.5;
+    color: $text-color-2;
+  }
+
+  .form {
+    display: flex;
+    margin-bottom: 60px;
+    font-size: 1rem;
+  }
+
+  .mat-form-field.keyword {
+    flex: 1;
+    margin-left: 2em;
+  }
+
+  .mat-button-base {
+    margin: 0.25em 0 5px 1.34375em;
+    padding: 0 2em;
+    height: 58px;
+  }
+}

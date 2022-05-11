@@ -13,6 +13,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SafePipe } from './pipes/safe.pipe';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const materialModules = [
   MatListModule,
@@ -25,6 +26,7 @@ const materialModules = [
   MatCardModule,
   MatGridListModule,
   MatProgressSpinnerModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({

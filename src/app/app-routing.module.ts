@@ -29,10 +29,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'Search/:tourismType',
-        component: SearchComponent,
-      },
-      {
         path: '**',
         component: PageNotFoundComponent,
       },

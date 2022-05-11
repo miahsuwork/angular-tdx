@@ -7,10 +7,11 @@ import { getCity } from 'src/app/core/utils/city-helper';
 import { isEmptyObject } from 'src/app/core/utils/is-empty-object';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Nearby } from '../../models/nearby.model';
+import { TourismCard } from '../../models/tourism-card.model';
 import { TourismPicture } from '../../models/tourism-picture.model';
 import { Picture } from '../../models/picture.model';
 import { TourismService } from '../../services/tourism.service';
+import { TourismTypeFieldName } from 'src/app/core/enums/tourism-type-field-name.enum';
 
 @Component({
   selector: 'app-detail',
@@ -23,7 +24,7 @@ export class DetailComponent implements OnInit {
   id$ = new BehaviorSubject('');
   id: string;
   detailData: Detail;
-  nearbyDataList: Nearby[];
+  nearbyDataList: TourismCard[];
   mapUrl: string;
   nearbyCount = 4;
   emptyPictureUrl = EMPTY_PICTURE_URL;
@@ -74,7 +75,7 @@ export class DetailComponent implements OnInit {
   getScenicSpotDetail(): void {
     this.tourismService
       .getScenicSpot({
-        filter: `${TourismType.SCENIC_SPOT}ID eq '${this.id}'`,
+        filter: `${TourismTypeFieldName.SCENIC_SPOT}ID eq '${this.id}'`,
       })
       .subscribe((request) => {
         const data = request[0];
@@ -124,7 +125,7 @@ export class DetailComponent implements OnInit {
   getActivityDetail(): void {
     this.tourismService
       .getActivity({
-        filter: `${TourismType.ACTIVITY}ID eq '${this.id}'`,
+        filter: `${TourismTypeFieldName.ACTIVITY}ID eq '${this.id}'`,
       })
       .subscribe((request) => {
         const data = request[0];
@@ -173,7 +174,7 @@ export class DetailComponent implements OnInit {
   getRestaurantDetail(): void {
     this.tourismService
       .getRestaurant({
-        filter: `${TourismType.RESTAURANT}ID eq '${this.id}'`,
+        filter: `${TourismTypeFieldName.RESTAURANT}ID eq '${this.id}'`,
       })
       .subscribe((request) => {
         const data = request[0];
@@ -217,13 +218,13 @@ export class DetailComponent implements OnInit {
     this.tourismService
       .getScenicSpot({
         top: this.nearbyCount,
-        filter: `${TourismType.SCENIC_SPOT}ID ne '${this.id}'`,
+        filter: `${TourismTypeFieldName.SCENIC_SPOT}ID ne '${this.id}'`,
         spatialFilter: `nearby(${this.detailData.position.positionLat},${
           this.detailData.position.positionLon
         },${this.getRandom(4000, 5000)})`,
       })
       .subscribe((request) => {
-        this.nearbyDataList = request.map((item): Nearby => {
+        this.nearbyDataList = request.map((item): TourismCard => {
           let picture: Picture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
@@ -244,13 +245,13 @@ export class DetailComponent implements OnInit {
     this.tourismService
       .getActivity({
         top: this.nearbyCount,
-        filter: `${TourismType.ACTIVITY}ID ne '${this.id}'`,
+        filter: `${TourismTypeFieldName.ACTIVITY}ID ne '${this.id}'`,
         spatialFilter: `nearby(${this.detailData.position.positionLat},${
           this.detailData.position.positionLon
         },${this.getRandom(9000, 10000)})`,
       })
       .subscribe((request) => {
-        this.nearbyDataList = request.map((item): Nearby => {
+        this.nearbyDataList = request.map((item): TourismCard => {
           let picture: Picture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
@@ -271,13 +272,13 @@ export class DetailComponent implements OnInit {
     this.tourismService
       .getRestaurant({
         top: this.nearbyCount,
-        filter: `${TourismType.RESTAURANT}ID ne '${this.id}'`,
+        filter: `${TourismTypeFieldName.RESTAURANT}ID ne '${this.id}'`,
         spatialFilter: `nearby(${this.detailData.position.positionLat},${
           this.detailData.position.positionLon
         },${this.getRandom(4000, 5000)})`,
       })
       .subscribe((request) => {
-        this.nearbyDataList = request.map((item): Nearby => {
+        this.nearbyDataList = request.map((item): TourismCard => {
           let picture: Picture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {

@@ -11,6 +11,7 @@
         mat-list-item
         routerLinkActive="active"
         [routerLink]="link.url"
+        (click)="command(link.url)"
         *ngFor="let link of navbar"
       >
         {{ "navbar." + link.label | translate }}

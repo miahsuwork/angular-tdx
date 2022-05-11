@@ -1,3 +1,5 @@
+import { ResponseInterceptor } from './interceptors/response.interceptor';
+import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -22,6 +24,16 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TimeoutInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
       multi: true,
     },
   ],

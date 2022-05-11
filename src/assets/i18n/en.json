@@ -14,7 +14,8 @@
     "type": "type",
     "keyword-placeholder": "where do you want to go? please enter key words",
     "more": "more",
-    "detailed": "detailed"
+    "detailed": "detailed",
+    "city": "city"
   },
   "taiwan-travel-guide": "Taiwan Travel Guide",
   "home": {
@@ -22,5 +23,10 @@
     "recent-activity": "Recent Activity",
     "popular-scenic-spot": "Popular Scenic Spot",
     "popular-restaurant": "Popular Restaurant"
+  },
+  "recommended-items": {
+    "scenic-spot": "scenic-spot",
+    "activity": "activity",
+    "restaurant": "restaurant"
   }
 }

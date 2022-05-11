@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -15,7 +16,8 @@ import { TokenService } from '../services/token.service';
 export class AuthGuard implements CanActivate {
   constructor(
     private tokenService: TokenService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private router: Router
   ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -33,6 +35,7 @@ export class AuthGuard implements CanActivate {
         this.storageService.token.setItem(
           `${request.token_type} ${request.access_token}`
         );
+        this.router.navigate(['/']);
         return true;
       });
     }

@@ -9,15 +9,15 @@ export class MenuService {
   navbar: MenuItem[] = [
     {
       label: 'scenic-spot',
-      url: '/Search/ScenicSpot',
+      url: '/search/scenic-spot',
     },
     {
       label: 'activity',
-      url: '/Search/Activity',
+      url: '/search/activity',
     },
     {
       label: 'restaurant',
-      url: '/Search/Restaurant',
+      url: '/search/restaurant',
     },
   ];
 

@@ -10,13 +10,13 @@
     <form class="home-form form" [formGroup]="searchForm">
       <mat-form-field appearance="outline">
         <mat-label>{{ "common.type" | translate }}</mat-label>
-        <mat-select formControlName="searchType">
+        <mat-select formControlName="searchOperation">
           <mat-option *ngFor="let item of searchOptions" [value]="item.value">
             {{ "navbar." + item.label | translate }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="outline">
+      <mat-form-field appearance="outline">
         <mat-label>{{ "common.keyword-placeholder" | translate }}</mat-label>
         <input matInput formControlName="keyword" />
       </mat-form-field>
@@ -32,7 +32,7 @@
         {{ "home.recent-activity" | translate }}
       </div>
       <a
-        [routerLink]="['/Search', searchType.ACTIVITY]"
+        [routerLink]="['/search', searchType.ACTIVITY]"
         class="home-title-more"
       >
         {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
@@ -67,7 +67,7 @@
             <div class="card-footer">
               <div class="card-city ic ic-address">{{ item.City }}</div>
               <a
-                [routerLink]="['/Search', searchType.ACTIVITY, item.ActivityID]"
+                [routerLink]="['/search', searchType.ACTIVITY, item.ActivityID]"
                 class="card-more"
                 >{{ "common.detailed" | translate
                 }}<i class="ic ic-arrow-green-right"></i
@@ -83,7 +83,7 @@
         {{ "home.popular-scenic-spot" | translate }}
       </div>
       <a
-        [routerLink]="['/Search', searchType.SCENIC_SPOT]"
+        [routerLink]="['/search', searchType.SCENIC_SPOT]"
         class="home-title-more"
       >
         {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
@@ -93,7 +93,7 @@
       <mat-grid-tile class="common-card" *ngFor="let item of scenicSpotData">
         <a
           class="card-content"
-          [routerLink]="['/Search', searchType.SCENIC_SPOT, item.ScenicSpotID]"
+          [routerLink]="['/search', searchType.SCENIC_SPOT, item.ScenicSpotID]"
         >
           <div class="card-img-outer">
             <img
@@ -125,7 +125,7 @@
       </div>
       <a
         class="home-title-more"
-        [routerLink]="['/Search', searchType.RESTAURANT]"
+        [routerLink]="['/search', searchType.RESTAURANT]"
       >
         {{ "common.more" | translate }}<i class="ic ic-arrow-orange-right"></i>
       </a>
@@ -134,7 +134,7 @@
       <mat-grid-tile class="common-card" *ngFor="let item of restaurantData">
         <a
           class="card-content"
-          [routerLink]="['/Search', searchType.RESTAURANT, item.RestaurantID]"
+          [routerLink]="['/search', searchType.RESTAURANT, item.RestaurantID]"
         >
           <div class="card-img-outer">
             <img

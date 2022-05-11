@@ -1,18 +1,22 @@
+import { tap } from 'rxjs/operators';
 import { ApiBaseService } from 'src/app/core/services/api-base.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { TourismParameters } from 'src/app/features/tourism/models/tourism-parameter.model';
 import { TourismScenicSpot } from 'src/app/features/tourism/models/tourism-scenic-spot.model';
 import { TourismRestaurant } from 'src/app/features/tourism/models/tourism-restaurant.model';
 import { TourismActivity } from '../models/tourism-activity.model';
+import { ActivatedRoute } from '@angular/router';
+import { TourismType } from 'src/app/core/enums/tourism-type.enum';
+import { TourismParamMap } from '../models/tourism-param-map.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TourismService extends ApiBaseService {
-  constructor(protected http: HttpClient) {
+  constructor(protected http: HttpClient, private route: ActivatedRoute) {
     super(environment.tdxApiUrl, http);
   }
 

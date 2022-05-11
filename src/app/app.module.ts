@@ -1,4 +1,3 @@
-import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,6 +10,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CoreModule } from './core/core.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DEFAULT_TIMEOUT } from './core/interceptors/timeout.interceptor';
 
 /**
  * @description 建立語系檔的讀取器
@@ -37,9 +38,12 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
       },
     }),
     PresetModule,
-    SharedModule,
+    MatSnackBarModule,
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: DEFAULT_TIMEOUT, useValue: 30000 },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
