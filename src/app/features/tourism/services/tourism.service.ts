@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { TourismParameters } from '../models/tourism-parameter.model';
+import { TourismParameters } from 'src/app/features/tourism/models/tourism-parameter.model';
+import { TourismScenicSpot } from 'src/app/features/tourism/models/tourism-scenic-spot.model';
+import { TourismRestaurant } from 'src/app/features/tourism/models/tourism-restaurant.model';
 import { TourismActivity } from '../models/tourism-activity.model';
-import { TourismRestaurant } from '../models/tourism-restaurant.model';
-import { TourismScenicSpot } from '../models/tourism-scenic-spot.model';
 
 @Injectable({
   providedIn: 'root',

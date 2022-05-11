@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
+import { SearchComponent } from './features/tourism/pages/search/search.component';
 import { LayoutComponent } from './preset/components/layout/layout.component';
 import { PageNotFoundComponent } from './preset/components/page-not-found/page-not-found.component';
-import { SearchComponent } from './shared/components/search/search.component';
 
 const routes: Routes = [
   {
@@ -24,7 +24,9 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./features/home/home.module').then((m) => m.HomeModule),
+          import('./features/tourism/tourism.module').then(
+            (m) => m.TourismModule
+          ),
       },
       {
         path: 'Search/:tourismType',

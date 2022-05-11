@@ -1,16 +1,16 @@
-import { EMPTY_PICTURE_URL } from './../../../../constants/index';
-import { Detail } from './../../../core/models/detail.model';
-import { TourismService } from './../../../core/services/tourism.service';
-import { TourismType } from '../../../core/enums/tourism-type.enum';
+import { EMPTY_PICTURE_URL } from '../../../../../constants/index';
+import { Detail } from '../../models/detail.model';
+import { TourismType } from '../../../../core/enums/tourism-type.enum';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { getCity } from 'src/app/core/utils/city-helper';
 import { isEmptyObject } from 'src/app/core/utils/is-empty-object';
-import { Picture } from 'src/app/core/models/picture.model';
-import { TourismPicture } from 'src/app/core/models/tourism-picture.model';
-import { Nearby } from 'src/app/core/models/nearby.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { Nearby } from '../../models/nearby.model';
+import { TourismPicture } from '../../models/tourism-picture.model';
+import { Picture } from '../../models/picture.model';
+import { TourismService } from '../../services/tourism.service';
 
 @Component({
   selector: 'app-detail',

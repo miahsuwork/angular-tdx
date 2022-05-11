@@ -1,9 +1,8 @@
-import { DetailComponent } from '../../shared/components/detail/detail.component';
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetailComponent } from './pages/detail/detail.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SearchComponent } from 'src/app/shared/components/search/search.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   {
@@ -24,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomeRoutingModule {}
+export class TourismRoutingModule {}

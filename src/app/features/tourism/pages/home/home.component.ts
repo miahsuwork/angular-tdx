@@ -2,14 +2,14 @@ import { TourismType } from '../../../../core/enums/tourism-type.enum';
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from 'src/app/core/services/menu.service';
 import { Option } from 'src/app/core/models/option.model';
-import { TourismService } from 'src/app/core/services/tourism.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TourismActivity } from 'src/app/core/models/tourism-activity.model';
+import { TourismActivity } from 'src/app/features/tourism/models/tourism-activity.model';
 import { EMPTY_PICTURE_URL } from 'src/constants';
-import { TourismRestaurant } from 'src/app/core/models/tourism-restaurant.model';
-import { TourismScenicSpot } from 'src/app/core/models/tourism-scenic-spot.model';
 import { FormService } from 'src/app/core/services/form.service';
 import { getCity } from 'src/app/core/utils/city-helper';
+import { TourismRestaurant } from '../../models/tourism-restaurant.model';
+import { TourismScenicSpot } from '../../models/tourism-scenic-spot.model';
+import { TourismService } from '../../services/tourism.service';
 
 @Component({
   selector: 'app-home',
