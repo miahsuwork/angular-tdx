@@ -14,7 +14,6 @@
 - @ngx-translate
 - @ngx-translate/http-loader
 - url-join
-- jssha
 
 ## 網站功能
 
@@ -38,13 +37,13 @@
 - 在 Environment 設定取得 token 資訊。
 - 建立 loader interceptors 統一 loading 畫面。
 - 建立 timeout interceptors 處理 API 回應過久時導到 error interceptors 處理。
-- 建立 storage.service 將 token 儲存於 localstorage 中。
+- 建立 storage.service 將 token 儲存於 sessionStorage 中。
 
-### 議題討論
+### 問題相談
 
 - 語系轉換
-  - `提問` 如何避免兩語系設定檔不同步的問題？
-  - `提問` 嘗試了在設定檔中 inner HTML 通常是允許這種方法嗎？
+  - 如何避免兩語系設定檔不同步的問題？
+  - 嘗試了在設定檔中 inner HTML 但感覺實務上不會這樣使用。
   - `提問` 倘若資料是來自於後端，那在語系轉換的部分也會是由後端轉換嗎？
 - material
   - material 的 loading 與 primeNG 使用的方式很不同， primeNG 是使用一個 boolean 去控制開關，material 是使用 method 控制，導致在計算 api 產生 loading 的邏輯不同。

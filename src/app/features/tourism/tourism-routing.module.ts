@@ -10,6 +10,11 @@ const routes: Routes = [
     component: TourismHomeComponent,
   },
   {
+    path: 'search',
+    redirectTo: 'search/scenic-spot',
+    pathMatch: 'full',
+  },
+  {
     path: 'search/:tourismType',
     component: TourismSearchComponent,
   },

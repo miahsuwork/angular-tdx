@@ -92,7 +92,6 @@
 │   │   │   │   └── page-not-found
 │   │   │   └── preset.module.ts
 │   │   └── shared
-│   │       ├── components
 │   │       ├── pipes
 │   │       │   └── safe.pipe.ts
 │   │       └── shared.module.ts

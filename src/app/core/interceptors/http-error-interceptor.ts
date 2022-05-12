@@ -29,7 +29,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         switch (err.status) {
           case 401:
             // 表示 token 過期，移除舊 token 並重新導回首頁
-
             this.storageService.token.removeItem();
             this.router
               .navigateByUrl('/redirect', { skipLocationChange: true })

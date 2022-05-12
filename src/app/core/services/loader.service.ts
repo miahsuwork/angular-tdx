@@ -46,9 +46,7 @@ export class LoaderService {
     }
     this.loading$.subscribe((status: boolean) => {
       if (this.executingCounter === 0 && status) {
-        setTimeout(() => {
-          this.spinnerTopRef.detach();
-        }, 500);
+        this.spinnerTopRef.detach();
         this.loadingStatus$.next(false);
       }
     });
