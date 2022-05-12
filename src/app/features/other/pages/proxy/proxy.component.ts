@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProxyService } from '../services/proxy.service';
+import { ProxyService } from '../../services/proxy.service';
 
 @Component({
   selector: 'app-proxy',

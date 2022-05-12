@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { SearchComponent } from './features/tourism/pages/search/search.component';
+import { RedirectComponent } from './features/tourism/pages/redirect/redirect.component';
 import { LayoutComponent } from './preset/components/layout/layout.component';
 import { PageNotFoundComponent } from './preset/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
-    path: 'proxy',
+    path: 'other',
     loadChildren: () =>
-      import('./features/proxy/proxy.module').then((m) => m.ProxyModule),
-  },
-  {
-    path: 'aes-rsa',
-    loadChildren: () =>
-      import('./features/aes-rsa/aes-rsa.module').then((m) => m.AesRsaModule),
+      import('./features/other/other.module').then((m) => m.OtherModule),
   },
   {
     path: '',
@@ -28,11 +23,15 @@ const routes: Routes = [
             (m) => m.TourismModule
           ),
       },
-      {
-        path: '**',
-        component: PageNotFoundComponent,
-      },
     ],
+  },
+  {
+    path: 'redirect',
+    component: RedirectComponent,
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
 

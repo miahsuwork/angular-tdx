@@ -18,6 +18,18 @@ app.use(bodyParser.json());
 app.get("/api/getKeys", rsaController.getKeys);
 app.get("/api/getPublicKey", rsaController.getPublicKey);
 app.post("/api/privateDecrypt", rsaController.privateDecrypt);
+app.get("/users", (req, res) => {
+  res.json({
+    id: "123",
+    metadata: "blah",
+    data: {
+      users: {
+        count: 4,
+        list: ["bob", "john", "doe"],
+      },
+    },
+  });
+});
 
 app.listen(port, () => {
   db.connect();

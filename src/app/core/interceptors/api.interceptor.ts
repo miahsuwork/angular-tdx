@@ -17,7 +17,9 @@ export class ApiInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request.url.indexOf('Tourism') > 0) {
+    // 如果 API Url 是撈取觀光資料的時候，要放入 token
+
+    if (request.url.includes('Tourism')) {
       request = request.clone({
         headers: request.headers.set('authorization', 'client_credentials'),
       });

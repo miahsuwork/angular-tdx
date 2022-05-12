@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ToastService } from './../services/toast.service';
 import {
   HttpErrorResponse,
@@ -15,7 +16,8 @@ import { StorageService } from '../services/storage.service';
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(
     private storageService: StorageService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   intercept(
@@ -26,7 +28,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       catchError((err: HttpErrorResponse) => {
         switch (err.status) {
           case 401:
+            // 表示 token 過期，移除舊 token 並重新導回首頁
+
             this.storageService.token.removeItem();
+            this.router
+              .navigateByUrl('/redirect', { skipLocationChange: true })
+              .then(() => {
+                this.router.navigate(['/']);
+              });
             break;
           case 400:
             this.toastService.error(
@@ -35,6 +44,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           case 404:
             this.toastService.error(
               `${err.status.toString() + ' '}發生錯誤，請稍後再試`
+            );
+            break;
+          case 500:
+            this.toastService.error(
+              `${
+                err.status.toString() + ' '
+              }發生錯誤，請稍後再試或聯繫系統管理者`
             );
             break;
           case -1:

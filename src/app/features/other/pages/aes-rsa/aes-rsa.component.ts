@@ -1,12 +1,12 @@
 import { FormService } from 'src/app/core/services/form.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { AesRsaService } from './../../services/aes-rsa.service';
+import { AesRsaService } from '../../services/aes-rsa.service';
 import { Component, OnInit } from '@angular/core';
-import { AesRsaRequest } from '../../models/aes-rsa-request.model';
 import {
   encryptByAES,
   encryptByRSA,
 } from 'src/app/core/utils/encryption-decryption-helper';
+import { AesRsaRequest } from '../../models/aes-rsa-request.model';
 import { AesRsaResponse } from '../../models/aes-rsa-response.model';
 
 @Component({

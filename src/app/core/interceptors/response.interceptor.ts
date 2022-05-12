@@ -4,10 +4,11 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpEventType,
+  HttpResponse,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
+import { Users } from '../models/users.model';
 
 @Injectable()
 export class ResponseInterceptor implements HttpInterceptor {
@@ -17,13 +18,18 @@ export class ResponseInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return next.handle(request).pipe(
-      tap((response) => {
-        if (response.type === HttpEventType.Response) {
-          const body = response.body;
-          // 處理統一邏輯
-        }
-      })
-    );
+    if (/\.json$/i.test(request.url) || /api/i.test(request.url)) {
+      return next.handle(request);
+    } else {
+      return next.handle(request).pipe(
+        filter(
+          (event) =>
+            event instanceof HttpResponse && request.url.includes('users')
+        ),
+        map((event: HttpResponse<Users>) => {
+          return event.clone({ body: event.body.data.users.list });
+        })
+      );
+    }
   }
 }
