@@ -18,7 +18,11 @@ export class ResponseInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (/\.json$/i.test(request.url) || /api/i.test(request.url)) {
+    if (
+      /\.json$/i.test(request.url) ||
+      /api/i.test(request.url) ||
+      /transportdat/i.test(request.url)
+    ) {
       return next.handle(request);
     } else {
       return next.handle(request).pipe(

@@ -14,15 +14,15 @@ import { getCity } from 'src/app/core/utils/city-helper';
 import { EMPTY_PICTURE_URL } from 'src/constants';
 import { CITY } from 'src/constants/city';
 import { TourismCard } from '../../models/tourism-card.model';
-import { Picture } from '../../models/picture.model';
+import { TourismPicture } from '../../models/tourism-picture.model';
 import { TourismService } from '../../services/tourism.service';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  selector: 'app-tourism-search',
+  templateUrl: './tourism-search.component.html',
+  styleUrls: ['./tourism-search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class TourismSearchComponent implements OnInit {
   searchType: TourismType;
   tourismType = TourismType;
   searchOptions: Option[];
@@ -65,7 +65,7 @@ export class SearchComponent implements OnInit {
       })
       .subscribe((request) => {
         this.resultData = request.map((item): TourismCard => {
-          let picture: Picture;
+          let picture: TourismPicture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
               pictureUrl: item.Picture.PictureUrl1,
@@ -94,7 +94,7 @@ export class SearchComponent implements OnInit {
       )
       .subscribe((request) => {
         this.resultData = request.map((item): TourismCard => {
-          let picture: Picture;
+          let picture: TourismPicture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
               pictureUrl: item.Picture.PictureUrl1,
@@ -119,7 +119,7 @@ export class SearchComponent implements OnInit {
       })
       .subscribe((request) => {
         this.resultData = request.map((item): TourismCard => {
-          let picture: Picture;
+          let picture: TourismPicture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
               pictureUrl: item.Picture.PictureUrl1,

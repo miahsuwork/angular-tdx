@@ -1,6 +1,6 @@
-import { Picture } from './picture.model';
+import { TourismPicture } from './tourism-picture.model';
 
-export interface Detail {
+export interface TourismDetail {
   id: string;
   name: string;
   address: string;
@@ -9,7 +9,7 @@ export interface Detail {
   phone: string;
   srcUpdateTime: string;
   updateTime: string;
-  pictures: Picture[];
+  pictures: TourismPicture[];
   position: { positionLon: number; positionLat: number; geoHash: string };
   zipCode: string;
   websiteUrl: string;

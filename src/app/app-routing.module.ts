@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './core/guards/auth.guard';
-import { RedirectComponent } from './features/tourism/pages/redirect/redirect.component';
+import { TourismRedirectComponent } from './features/tourism/pages/tourism-redirect/tourism-redirect.component';
 import { LayoutComponent } from './preset/components/layout/layout.component';
 import { PageNotFoundComponent } from './preset/components/page-not-found/page-not-found.component';
 
@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'redirect',
-    component: RedirectComponent,
+    component: TourismRedirectComponent,
   },
   {
     path: '**',

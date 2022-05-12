@@ -1,4 +1,4 @@
-import { TourismPicture } from './tourism-picture.model';
+import { TourismResponsePicture } from './tourism-response-picture.model';
 
 export interface TourismRestaurant {
   RestaurantID: string;
@@ -10,7 +10,7 @@ export interface TourismRestaurant {
   City: string;
   OpenTime: string;
   WebsiteUrl: string;
-  Picture: TourismPicture;
+  Picture: TourismResponsePicture;
   Position: { PositionLon: number; PositionLat: number; GeoHash: string };
   Class: string;
   SrcUpdateTime: string;

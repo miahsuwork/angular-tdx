@@ -1,5 +1,5 @@
 import { EMPTY_PICTURE_URL } from '../../../../../constants/index';
-import { Detail } from '../../models/detail.model';
+import { TourismDetail } from '../../models/tourism-detail.model';
 import { TourismType } from '../../../../core/enums/tourism-type.enum';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -8,22 +8,22 @@ import { isEmptyObject } from 'src/app/core/utils/is-empty-object';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { TourismCard } from '../../models/tourism-card.model';
+import { TourismResponsePicture } from '../../models/tourism-response-picture.model';
 import { TourismPicture } from '../../models/tourism-picture.model';
-import { Picture } from '../../models/picture.model';
 import { TourismService } from '../../services/tourism.service';
 import { TourismTypeFieldName } from 'src/app/core/enums/tourism-type-field-name.enum';
 
 @Component({
-  selector: 'app-detail',
+  selector: 'app-tourism-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
-export class DetailComponent implements OnInit {
+export class TourismDetailComponent implements OnInit {
   searchType: TourismType;
   tourismType = TourismType;
   id$ = new BehaviorSubject('');
   id: string;
-  detailData: Detail;
+  detailData: TourismDetail;
   nearbyDataList: TourismCard[];
   mapUrl: string;
   nearbyCount = 4;
@@ -51,8 +51,8 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  getPictureList(tourismPicture: TourismPicture): Picture[] {
-    const pictureList: Picture[] = [];
+  getPictureList(tourismPicture: TourismResponsePicture): TourismPicture[] {
+    const pictureList: TourismPicture[] = [];
     pictureList.push({
       pictureDescription: tourismPicture.PictureDescription1,
       pictureUrl: tourismPicture.PictureUrl1,
@@ -225,7 +225,7 @@ export class DetailComponent implements OnInit {
       })
       .subscribe((request) => {
         this.nearbyDataList = request.map((item): TourismCard => {
-          let picture: Picture;
+          let picture: TourismPicture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
               pictureUrl: item.Picture.PictureUrl1,
@@ -252,7 +252,7 @@ export class DetailComponent implements OnInit {
       })
       .subscribe((request) => {
         this.nearbyDataList = request.map((item): TourismCard => {
-          let picture: Picture;
+          let picture: TourismPicture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
               pictureUrl: item.Picture.PictureUrl1,
@@ -279,7 +279,7 @@ export class DetailComponent implements OnInit {
       })
       .subscribe((request) => {
         this.nearbyDataList = request.map((item): TourismCard => {
-          let picture: Picture;
+          let picture: TourismPicture;
           if (item.Picture.hasOwnProperty('PictureUrl1')) {
             picture = {
               pictureUrl: item.Picture.PictureUrl1,

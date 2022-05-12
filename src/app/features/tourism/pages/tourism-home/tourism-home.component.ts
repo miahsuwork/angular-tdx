@@ -18,11 +18,11 @@ import { TourismService } from '../../services/tourism.service';
 import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-tourism-home',
+  templateUrl: './tourism-home.component.html',
+  styleUrls: ['./tourism-home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class TourismHomeComponent implements OnInit {
   searchOptions: Option[];
   selectedSearchOption: string;
   searchForm: FormGroup;

@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailComponent } from './pages/detail/detail.component';
-import { HomeComponent } from './pages/home/home.component';
-import { SearchComponent } from './pages/search/search.component';
+import { TourismDetailComponent } from './pages/tourism-detail/detail.component';
+import { TourismHomeComponent } from './pages/tourism-home/tourism-home.component';
+import { TourismSearchComponent } from './pages/tourism-search/tourism-search.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: TourismHomeComponent,
   },
   {
     path: 'search/:tourismType',
-    component: SearchComponent,
+    component: TourismSearchComponent,
   },
   {
     path: 'search/:tourismType/:id',
-    component: DetailComponent,
+    component: TourismDetailComponent,
   },
 ];
 

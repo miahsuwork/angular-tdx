@@ -1,4 +1,4 @@
-import { TourismPicture } from './tourism-picture.model';
+import { TourismResponsePicture } from './tourism-response-picture.model';
 
 export interface TourismScenicSpot {
   ScenicSpotID: string;
@@ -9,7 +9,7 @@ export interface TourismScenicSpot {
   ZipCode: string;
   TravelInfo: string;
   OpenTime: string;
-  Picture: TourismPicture;
+  Picture: TourismResponsePicture;
   Position: { PositionLon: number; PositionLat: number; GeoHash: string };
   ParkingPosition: object;
   TicketInfo: string;
